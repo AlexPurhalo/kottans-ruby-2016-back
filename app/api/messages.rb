@@ -7,11 +7,6 @@ class Messages < Grape::API
     get '/' do
       { message: 'hello it works' }
     end
-
-
-    post '/' do
-
-    end
   end
 
   add_swagger_documentation info: { title: 'Messages API' },
