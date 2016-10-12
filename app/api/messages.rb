@@ -4,10 +4,6 @@ class Messages < Grape::API
   format :json
 
   resource :messages do
-    get '/' do
-      { message: 'hello it works' }
-    end
-
     # sets parameters from request's payload    # { body: 'LrMnKFsWdfF...', visits_limit: 3, exist_hours: 0.5 }
     params do
       requires :body,         type: String,  desc:                                          'Encrypted message'
