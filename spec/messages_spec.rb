@@ -1,6 +1,6 @@
 require 'rspec'
 require 'rack/test'
-require './app/api/messages'
+require './app/core'
 
 describe Messages do
   include Rack::Test::Methods

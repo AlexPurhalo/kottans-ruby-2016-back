@@ -1,5 +1,3 @@
-require 'grape'
-
 class Messages < Grape::API
 
   version 'v1', using: :header, vendor: 'alexpurhalo'
