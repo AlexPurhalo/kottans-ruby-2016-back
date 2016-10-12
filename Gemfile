@@ -10,3 +10,7 @@ group :test do
   gem 'rack-test', '~> 0.6.3', require: 'rack/test'
   gem 'rspec', '~> 3.5'
 end
+
+gem 'grape-swagger', '~> 0.24.0'
+
+gem 'rack-fiber_pool', '~> 0.9.3'
