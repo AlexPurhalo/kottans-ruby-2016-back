@@ -32,3 +32,5 @@ gem 'grape-swagger', '~> 0.24.0'
 gem 'rack-fiber_pool', '~> 0.9.3'
 
 gem 'rack-cors', :require => 'rack/cors'
+
+gem 'grape-rabl', '~> 0.4.2', require: 'grape/rabl'

@@ -2,6 +2,7 @@ class Messages < Grape::API
 
   version 'v1', using: :header, vendor: 'alexpurhalo'
   format :json
+  formatter :json, Grape::Formatter::Rabl
 
   resource :messages do
     # sets parameters from request's payload    # { body: 'LrMnKFsWdfF...', visits_limit: 3, exist_hours: 0.5 }
@@ -12,7 +13,7 @@ class Messages < Grape::API
     end
 
     desc 'Creates a message'                            # message create process with POST request, ../messages
-    post '/' do
+    post '/', rabl: 'messages/message' do
       @message = Message.new params                              # takes and holds received parameters # step 1
 
       # sets index for created record to make it unique                                                # step 3

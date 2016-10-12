@@ -2,9 +2,9 @@ require 'rack'
 require 'rubygems'
 require 'bundler/setup'
 require 'grape'
+require 'rack/cors'
 require './app/core'
 
-require 'rack/cors'
 use Rack::Cors do
   allow do
     origins '*'
@@ -12,6 +12,10 @@ use Rack::Cors do
              :headers => :any,
              :methods => [:get, :post, :delete, :put, :options]
   end
+end
+
+use Rack::Config do |env|
+  env['api.tilt.root'] = 'app/views'
 end
 
 use ActiveRecord::ConnectionAdapters::ConnectionManagement

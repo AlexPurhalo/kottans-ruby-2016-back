@@ -1,7 +1,7 @@
 require 'helper_spec'
 
 describe Messages do
-  include Rack::Test::Methods
+  before { Messages.before { env['api.tilt.root'] = 'app/views' } }
 
   def app
     Messages
