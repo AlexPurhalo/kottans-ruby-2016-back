@@ -4,6 +4,16 @@ require 'bundler/setup'
 require 'grape'
 require './app/core'
 
+require 'rack/cors'
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*',
+             :headers => :any,
+             :methods => [:get, :post, :delete, :put, :options]
+  end
+end
+
 use ActiveRecord::ConnectionAdapters::ConnectionManagement
 
 run Messages

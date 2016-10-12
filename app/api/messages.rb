@@ -40,8 +40,4 @@ class Messages < Grape::API
                             markdown: false,
                             api_version: 'v1'
 
-  before do
-    header['Access-Control-Allow-Origin'] = '*'
-    header['Access-Control-Request-Method'] = '*'
-  end
 end
