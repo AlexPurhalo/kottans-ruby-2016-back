@@ -6,6 +6,6 @@
 
 <h3>Progress</h3>
 <ul>
-    <li>send GET request to http://localhost:5000/messages</li>
-    <li>output: { "message": "hello it works" }</li>
+    <li>$ rspec spec/messages_spec.rb</li>
+    <li>outpt: two passed tests, first by status and second by json data rendering</li>
 </ul>

@@ -1,3 +1,5 @@
+require 'grape'
+
 class Messages < Grape::API
 
   version 'v1', using: :header, vendor: 'alexpurhalo'
@@ -5,7 +7,7 @@ class Messages < Grape::API
 
   resource :messages do
     get '/' do
-      { message: 'hello it works'}
+      { message: 'hello it works' }
     end
   end
 end
