@@ -4,6 +4,8 @@ require 'bundler/setup'
 require 'grape'
 require './app/core'
 
+use ActiveRecord::ConnectionAdapters::ConnectionManagement
+
 run Messages
 
 use Rack::Static,
