@@ -1,2 +1,2 @@
 object @message
-attributes :link
+attributes :link, :visits_limit

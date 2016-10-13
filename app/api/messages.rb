@@ -16,6 +16,8 @@ class Messages < Grape::API
     post '/', rabl: 'messages/created_message' do
       @message = Message.new params                              # takes and holds received parameters # step 1
 
+      @message.views_count = 0                                          # sets initial count of visits # step 2
+
       # sets index for created record to make it unique                                                # step 3
       if Message.count === 0
         link_index = 1                                                        # indicates first record in db: 1
@@ -35,6 +37,16 @@ class Messages < Grape::API
       @message = Message.find params[:id]              # looks for object with unique link that is id, # step 1
       #       { link: '7:LrMnKFsW', body: 'LrMnKFsWdfF...', visits_limit: 3, exist_hours: 0.5, views_count: 0 }
 
+      @message.views_count += 1 # increments by one views count after every visit to page            # step 2.1
+      @message.save             # updates info about incremented by one view                         # step 2.2
+
+                                                        # checks that views count not reached limit    # step 3
+      if @message.visits_limit && @message.views_count >= @message.visits_limit
+        @message                       # if limit was reached it renders data about message lastly  # step 3.11
+        @message.destroy                # after then data was rendered it destroys message from db  # step 3.12
+      else
+        @message                                             # returns message if limit not reached  # step 3.2
+      end
     end
   end
 
