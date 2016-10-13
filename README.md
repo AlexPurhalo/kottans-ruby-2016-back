@@ -8,11 +8,11 @@
 <ul>
     <li>visit http://localhost:5000/swagger-ui/</li>
     <li>checkout List Operations</li>
-    <li>find POST request for /messages path</li>
-    <li>try it out passing data to body field</li>
-    <li>output: serialized message object with link</li>
+    <li>find GET request to record's</li>
+    <li>try it out passing as id existing link</li>
+    <li>output: message with link and body</li>
     <li>
-        <p>here how it looks</p>
-        <img src="https://raw.githubusercontent.com/AlexPurhalo/kottans-ruby-2016-back/master/guide/data-serialize.png"/> 
+        <p>Here how it looks</p>
+        <img src="https://raw.githubusercontent.com/AlexPurhalo/kottans-ruby-2016-back/master/guide/read-single-message.png"/> 
     </li>
 </ul>

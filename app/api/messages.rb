@@ -13,7 +13,7 @@ class Messages < Grape::API
     end
 
     desc 'Creates a message'                            # message create process with POST request, ../messages
-    post '/', rabl: 'messages/message' do
+    post '/', rabl: 'messages/created_message' do
       @message = Message.new params                              # takes and holds received parameters # step 1
 
       # sets index for created record to make it unique                                                # step 3
@@ -28,6 +28,13 @@ class Messages < Grape::API
       @message.link = link_index.to_s + ':' + @message.body[0..8]      # '7' + ':' + 'LrMnKFsW' => '7:LrMnKFsW'
 
       @message.save ? @message : { error: 'incorrect data' }
+    end
+
+    desc 'Reads a message'           # message reading wia GET request to unique link, .../messages/ 7:LrMnKFsW
+    get '/:id', rabl: 'messages/message_to_read' do
+      @message = Message.find params[:id]              # looks for object with unique link that is id, # step 1
+      #       { link: '7:LrMnKFsW', body: 'LrMnKFsWdfF...', visits_limit: 3, exist_hours: 0.5, views_count: 0 }
+
     end
   end
 
