@@ -3,6 +3,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'grape'
 require 'rack/cors'
+require 'sidekiq/web'
 require './app/core'
 
 use Rack::Cors do
@@ -37,4 +38,8 @@ map '/swagger-ui' do
         File.open('public/swagger_ui/index.html', File::RDONLY)
     ]
   }
+end
+
+map '/sidekiq' do
+  run Sidekiq::Web
 end

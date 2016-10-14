@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20161012165806) do
     t.string   "body"
     t.integer  "views_count"
     t.integer  "visits_limit"
-    t.integer  "exist_hours"
+    t.float    "exist_hours"
     t.datetime "deleted_at"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

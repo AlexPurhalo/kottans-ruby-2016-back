@@ -24,6 +24,8 @@ GEM
     coderay (1.1.1)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
+    concurrent-ruby (1.0.2)
+    connection_pool (2.2.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
@@ -77,6 +79,8 @@ GEM
       rack (>= 0.4)
     rack-cors (0.4.0)
     rack-fiber_pool (0.9.3)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     racksh (1.0.0)
@@ -88,6 +92,7 @@ GEM
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
     rake (10.5.0)
+    redis (3.3.1)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -101,6 +106,11 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    sidekiq (4.2.2)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (~> 1.5)
+      redis (~> 3.2, >= 3.2.1)
     slop (3.6.0)
     sqlite3 (1.3.12)
     thor (0.19.1)
@@ -134,6 +144,7 @@ DEPENDENCIES
   rails_12factor (~> 0.0.3)
   rake (~> 10.4, >= 10.4.2)
   rspec (~> 3.5)
+  sidekiq
   sqlite3 (~> 1.3, >= 1.3.11)
 
 RUBY VERSION

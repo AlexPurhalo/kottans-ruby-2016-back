@@ -9,7 +9,7 @@ class Messages < Grape::API
     params do
       requires :body,         type: String,  desc:                                          'Encrypted message'
       optional :visits_limit, type: Integer, desc:                                       'Allowed visits count'
-      optional :exist_hours,  type: Integer, desc:                          'Time of message existing in hours'
+      optional :exist_hours,  type: Float, desc:                            'Time of message existing in hours'
     end
 
     desc 'Creates a message'                            # message create process with POST request, ../messages
@@ -29,7 +29,20 @@ class Messages < Grape::API
       # adds index to new link                                                                         # step 4
       @message.link = link_index.to_s + ':' + @message.body[0..8]      # '7' + ':' + 'LrMnKFsW' => '7:LrMnKFsW'
 
-      @message.save ? @message : { error: 'incorrect data' }
+      if @message.save                                            # if data is correct saves message # step 5.0
+        if params[:exist_hours] # if we exist_hours param exists, allows do operations with this param
+          exist_secs = ((params[:exist_hours]) * 60 * 60).to_i       # transforms hours to seconds  # step 5.11
+
+          @message.deleted_at = Time.now + exist_secs # stores time of post destroying to db        # step 5.12
+
+          # calls background process to destroy after passed hours count
+          AutoDestory.perform_async(exist_secs, @message.link)                                      # step 5.13
+        end
+
+        @message  # shows serialized data about post                                             # alt step 5.1
+      else
+        { error: 'incorrect data' } # if something go wrong renders message about wrong data     # alt step 5.1
+      end
     end
 
     desc 'Reads a message'           # message reading wia GET request to unique link, .../messages/ 7:LrMnKFsW
@@ -40,7 +53,7 @@ class Messages < Grape::API
       @message.views_count += 1 # increments by one views count after every visit to page            # step 2.1
       @message.save             # updates info about incremented by one view                         # step 2.2
 
-                                                        # checks that views count not reached limit    # step 3
+      # checks that views count not reached limit    # step 3
       if @message.visits_limit && @message.views_count >= @message.visits_limit
         @message                       # if limit was reached it renders data about message lastly  # step 3.11
         @message.destroy                # after then data was rendered it destroys message from db  # step 3.12
