@@ -20,6 +20,7 @@ end
 group :production do
   gem 'pg', '0.18.1'
   gem 'rails_12factor', '~> 0.0.3'
+  gem 'newrelic_rpm'
 end
 
 group :test do
@@ -36,3 +37,5 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'grape-rabl', '~> 0.4.2', require: 'grape/rabl'
 
 gem 'sidekiq'
+
+gem 'newrelic_rpm'

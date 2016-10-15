@@ -1,0 +1,22 @@
+common: &default_settings
+  license_key: 226063f0221819815013c1b17186145a68f2bd3e
+
+  app_name: kottans-ruby-2016-back
+  log_level: info
+
+
+development:
+  <<: *default_settings
+  app_name: kottans-ruby-2016-back
+  developer_mode: true
+
+test:
+  <<: *default_settings
+  monitor_mode: false
+
+staging:
+  <<: *default_settings
+  app_name: kottans-ruby-2016-back
+
+production:
+  <<: *default_settings
