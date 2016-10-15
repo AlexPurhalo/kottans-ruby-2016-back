@@ -1,8 +1,8 @@
 # Sqlite 3 for development and test environments
 default: &default
   adapter: sqlite3
-  pool: 5
-  timeout: 5000
+  pool: 8
+  timeout: 6000
   database: db/development.sqlite3
 
 development:
@@ -14,6 +14,6 @@ test:
 # Postgres for production
 production:
   adapter: postgresql
-  pool: 5
-  timeout: 5000
+  pool: 8
+  timeout: 6000
   database: db/production.sqlite3

@@ -6,6 +6,17 @@ class Message < ActiveRecord::Base
   self.primary_key = :link
 end
 
+
+require 'sidekiq'
+
+Sidekiq.configure_client do |config|
+  config.redis = { :size => 1 }
+end
+
+Sidekiq.configure_server do |config|
+  config.redis = { :size => 10 }
+end
+
 class AutoDestory
   include Sidekiq::Worker
 
@@ -15,3 +26,4 @@ class AutoDestory
     message.destroy
   end
 end
+

@@ -36,6 +36,8 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'grape-rabl', '~> 0.4.2', require: 'grape/rabl'
 
-gem 'sidekiq'
+gem 'sidekiq', '~> 4.2', '>= 4.2.2'
+
+gem 'redis', '~> 3.3', '>= 3.3.1'
 
 gem 'newrelic_rpm'

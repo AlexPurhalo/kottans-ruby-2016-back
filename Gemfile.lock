@@ -145,8 +145,9 @@ DEPENDENCIES
   racksh (~> 1.0)
   rails_12factor (~> 0.0.3)
   rake (~> 10.4, >= 10.4.2)
+  redis (~> 3.3, >= 3.3.1)
   rspec (~> 3.5)
-  sidekiq
+  sidekiq (~> 4.2, >= 4.2.2)
   sqlite3 (~> 1.3, >= 1.3.11)
 
 RUBY VERSION
