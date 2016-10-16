@@ -13,17 +13,21 @@ describe Messages do
     index = index.to_s
 
     before do
-      post '/messages', 'body': 'JjsdISDrdSNSsdJJFfP'                                # posts data with body parameter
-      get "/messages/#{index}:JjsdISDrd"                                                  # fetches data bout message
+      post '/messages', 'body': 'U2FsdGVkX19oQX5dwuZIiIhozgPMnnwNDodnrnPQ4kE='        # posts data with body parameter
+      get "/messages/#{index}:U2FsdGVkX19oQX5dw"                                           # fetches data bout message
 
     end
 
     it 'includes a correct link' do
-      expect(last_response.body).to include("#{index.to_s}:JjsdISDrd".to_json)
+      expect(last_response.body).to include("#{index.to_s}:U2FsdGVkX19oQX5dw".to_json)
     end
 
     it 'includes a correct body' do
-      expect(last_response.body).to include("JjsdISDrdSNSsdJJFfP".to_json)
+      expect(last_response.body).to include("U2FsdGVkX19oQX5dwuZIiIhozgPMnnwNDodnrnPQ4kE=".to_json)
+    end
+
+    it 'has a correct status' do
+      expect(last_response.status).to  eq(200)
     end
   end
 end

@@ -27,7 +27,7 @@ class Messages < Grape::API
       end
 
       # adds index to new link                                                                         # step 4
-      @message.link = link_index.to_s + ':' + @message.body[0..8]      # '7' + ':' + 'LrMnKFsW' => '7:LrMnKFsW'
+      @message.link = link_index.to_s + ':' + @message.body[0..16]      # '7' + ':' + 'LrMnKFsW' => '7:LrMnKFsW'
 
       if @message.save                                            # if data is correct saves message # step 5.0
         if params[:exist_hours] # if we exist_hours param exists, allows do operations with this param
