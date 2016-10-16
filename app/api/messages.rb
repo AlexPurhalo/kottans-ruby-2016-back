@@ -69,4 +69,14 @@ class Messages < Grape::API
                             markdown: false,
                             api_version: 'v1'
 
+  # links to tasks sources, as additional
+  get '/' do
+    {
+        front_end_heroku: 'https://self-destruction-kottans-2016.herokuapp.com/',
+        back_end_heroku: 'https://kottands-ruby-2016-back.herokuapp.com',
+        github_back: 'https://github.com/AlexPurhalo/kottans-ruby-2016-back',
+        github_front: 'https://github.com/AlexPurhalo/kottans-ruby-2016-assignment-front-end'
+    }
+  end
+
 end
