@@ -4,8 +4,13 @@
     <li>$ rbenv shell 2.2.3 / evm use 2.2.3</li>
     <li>$ bundle install</li>
     <li>$ bundle exec rake db:migrate</li>
-    <li>$ rspec </li>
     <li>$ foreman start</li>
+</ul>
+
+<h3>Testing</h3>
+<ul>
+    <li>$ bundle exec rake db:migrate RACK_ENV=test</li>
+    <li>$ rspec </li>
 </ul>
 
 <h3>Video</h3>

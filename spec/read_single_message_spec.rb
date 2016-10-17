@@ -8,13 +8,19 @@ describe Messages do
   end
 
   describe 'reads info about a message' do
-    last_link = Message.order("created_at").last.link       # looks for lastly created record in DB   # 21:AbGlAmaGAM
-    index = last_link.slice(0..(last_link.index(':'))).to_i + 1    # takes index of record and adds increases it # 22
-    index = index.to_s
+    if Message.count === 0
+      index = 1                                                        # if records count equal zero crates first index
+    else
+      last_link = Message.order("created_at").last.link       # looks for lastly created record in DB   # 21:AbGlAmaGAM
+      index = last_link.slice(0..(last_link.index(':'))).to_i + 1    # takes index of record and adds increases it # 22
+      index = index.to_s
+    end
+
+
 
     before do
       post '/messages', 'body': 'U2FsdGVk/X19oQX5dwuZIiIhozgPMnnwNDodnrnPQ4kE='       # posts data with body parameter
-      get "/messages/#{index}:U2FsdGVkX19oQX5d"                                           # fetches data bout message
+      get "/messages/#{index}:U2FsdGVkX19oQX5d"                                            # fetches data bout message
 
     end
 
