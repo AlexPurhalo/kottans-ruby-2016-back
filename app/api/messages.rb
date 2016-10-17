@@ -26,8 +26,12 @@ class Messages < Grape::API
         link_index = last_link.slice(0..(last_link.index(':'))).to_i + 1  # slices to index: '6:JIniKUoPw' => 7
       end
 
-      # adds index to new link                                                                         # step 4
-      @message.link = link_index.to_s + ':' + @message.body[0..16]      # '7' + ':' + 'LrMnKFsW' => '7:LrMnKFsW'
+      # stocks sliced message and empty string then cuts '/' symbol and push validated data           # step 4.1
+      sliced_body, validated_link_body = @message.body[0..16], '' #         to empty string           # step 4.2
+      sliced_body.each_char { |char| validated_link_body << char if char != '/' }
+
+      # adds index to sliced and validated string                                                     # step 4.3
+      @message.link = link_index.to_s + ':' + validated_link_body       # '7' + ':' + 'LrMnKFsW' => '7:LrMnKFsW'
 
       if @message.save                                            # if data is correct saves message # step 5.0
         if params[:exist_hours] # if we exist_hours param exists, allows do operations with this param

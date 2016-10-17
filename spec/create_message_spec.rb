@@ -12,11 +12,11 @@ describe Messages do
     index = last_link.slice(0..(last_link.index(':'))).to_i + 1    # takes index of record and adds increases it # 22
 
     before do
-      post '/messages', 'body': 'U2FsdGVkX19oQX5dwuZIiIhozgPMnnwNDodnrnPQ4kE='       # posts data with body parameter
+      post '/messages', 'body': 'U2FsdGVk/X19oQX5dwuZIiIhozgPMnnwNDodnrnPQ4kE='       # posts data with body parameter
     end
     it 'includes a correct link' do
       # require 'pry'; binding.pry      # for debug
-      expect(last_response.body).to include("#{index.to_s}:U2FsdGVkX19oQX5dw".to_json)
+      expect(last_response.body).to include("#{index.to_s}:U2FsdGVkX19oQX5d".to_json)
     end
 
     it 'has a correct status' do
