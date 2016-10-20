@@ -26,6 +26,7 @@ GEM
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
+    database_cleaner (1.5.3)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
@@ -131,6 +132,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print (~> 1.6, >= 1.6.1)
+  database_cleaner (~> 1.5, >= 1.5.3)
   foreman (~> 0.82.0)
   grape (~> 0.18.0)
   grape-activerecord (~> 1.1, >= 1.1.2)
@@ -154,4 +156,4 @@ RUBY VERSION
    ruby 2.2.3p173
 
 BUNDLED WITH
-   1.13.3
+   1.13.5

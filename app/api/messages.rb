@@ -37,10 +37,8 @@ class Messages < Grape::API
         if params[:exist_hours] # if we exist_hours param exists, allows do operations with this param
           exist_secs = ((params[:exist_hours]) * 60 * 60).to_i       # transforms hours to seconds  # step 5.11
 
-          @message.deleted_at = Time.now + exist_secs # stores time of post destroying to db        # step 5.12
-
           # calls background process to destroy after passed hours count
-          AutoDestory.perform_async(exist_secs, @message.link)                                      # step 5.13
+          AutoDestory.perform_async(exist_secs, @message.link)                                      # step 5.12
         end
 
         @message  # shows serialized data about post                                             # alt step 5.1

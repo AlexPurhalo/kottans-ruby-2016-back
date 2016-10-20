@@ -1,2 +1,2 @@
 object @message
-attributes :link, :body, :views_count, :visits_limit, :created_at
+attributes :link, :body, :views_count, :visits_limit, :exist_hours

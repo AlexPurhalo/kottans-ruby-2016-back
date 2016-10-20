@@ -26,6 +26,7 @@ end
 group :test do
   gem 'rack-test', '~> 0.6.3', require: 'rack/test'
   gem 'rspec', '~> 3.5'
+  gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
 end
 
 gem 'grape-swagger', '~> 0.24.0'

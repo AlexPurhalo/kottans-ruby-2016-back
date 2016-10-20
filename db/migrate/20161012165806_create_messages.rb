@@ -6,7 +6,6 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :views_count
       t.integer :visits_limit
       t.float :exist_hours
-      t.datetime :deleted_at
 
       t.timestamps null: false
     end
